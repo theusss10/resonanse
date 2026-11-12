@@ -1,35 +1,290 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  <title>Tela de login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | Resonanse</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f4f4f4;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+        }
+
+        .btn-resonanse {
+            background: #212529;
+            color: white;
+        }
+
+        .btn-resonanse:hover {
+            background: #343a40;
+            color: white;
+        }
+
+        .alternar {
+            cursor: pointer;
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        .alternar:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="login-container">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-2">Resonanse</h2>
 
-<div class="container-fluid p-5 bg-primary text-white text-center">
-    <h1>SoundHate</h1>
+                <p class="text-center text-muted mb-4" id="descricao">
+                    Entre na sua conta
+                </p>
+
+                <div id="mensagem" class="alert d-none"></div>
+
+                <form id="formLogin">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Senha</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="senha"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-resonanse w-100">
+                        Entrar
+                    </button>
+                </form>
+
+                <form id="formCadastro" class="d-none">
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="nome"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Senha</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="senha"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Confirmar senha</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="confirmarSenha"
+                            minlength="6"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-resonanse w-100">
+                        Criar conta
+                    </button>
+                </form>
+
+                <p class="text-center mt-4 mb-0">
+                    <span id="textoAlternancia">Ainda não tem uma conta?</span>
+                    <a class="alternar" id="alternar">Cadastre-se</a>
+                </p>
+            </div>
+        </div>
     </div>
 
-<br>
+    <script>
+        const formLogin = document.getElementById('formLogin');
+        const formCadastro = document.getElementById('formCadastro');
+        const descricao = document.getElementById('descricao');
+        const alternar = document.getElementById('alternar');
+        const textoAlternancia = document.getElementById('textoAlternancia');
+        const mensagem = document.getElementById('mensagem');
 
-<h2>Faça login</h2>
+        function mostrarMensagem(texto, tipo = 'danger') {
+            mensagem.textContent = texto;
+            mensagem.className = `alert alert-${tipo}`;
+        }
 
-<br>
+        function limparMensagem() {
+            mensagem.textContent = '';
+            mensagem.className = 'alert d-none';
+        }
 
-<form action="/login" method="POST">
-    <div class="mb-3">
-        <label class="form-label" for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Digite seu email" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="inputPassword">Senha</label>
-        <input type="password" class="form-control" id="inputPassword" name="senha" placeholder="Digite sua senha" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
+        function traduzirErro(erro) {
+            const texto = String(erro || '');
 
+            if (texto.includes('Email not confirmed')) {
+                return 'Sua conta ainda não teve o email confirmado. Precisamos resolver a confirmação no Supabase.';
+            }
+
+            if (texto.includes('Invalid login credentials')) {
+                return 'Email ou senha incorretos.';
+            }
+
+            if (texto.includes('email rate limit exceeded')) {
+                return 'O Supabase limitou temporariamente os cadastros por email. Aguarde um pouco e tente novamente.';
+            }
+
+            if (texto.includes('User already registered')) {
+                return 'Este email já possui uma conta.';
+            }
+
+            return texto || 'Ocorreu um erro inesperado.';
+        }
+
+        alternar.addEventListener('click', () => {
+            limparMensagem();
+
+            const cadastroAtivo = !formCadastro.classList.contains('d-none');
+
+            if (cadastroAtivo) {
+                formCadastro.classList.add('d-none');
+                formLogin.classList.remove('d-none');
+
+                descricao.textContent = 'Entre na sua conta';
+                textoAlternancia.textContent = 'Ainda não tem uma conta?';
+                alternar.textContent = 'Cadastre-se';
+            } else {
+                formLogin.classList.add('d-none');
+                formCadastro.classList.remove('d-none');
+
+                descricao.textContent = 'Crie sua conta';
+                textoAlternancia.textContent = 'Já possui uma conta?';
+                alternar.textContent = 'Entrar';
+            }
+        });
+
+        async function enviarFormulario(url, formulario) {
+            const resposta = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(new FormData(formulario))
+            });
+
+            const texto = await resposta.text();
+
+            let dados;
+
+            try {
+                dados = JSON.parse(texto);
+            } catch {
+                throw new Error(
+                    `O servidor retornou uma resposta inesperada (HTTP ${resposta.status}).`
+                );
+            }
+
+            if (!resposta.ok) {
+                throw new Error(traduzirErro(dados.erro));
+            }
+
+            if (!dados.sucesso) {
+                throw new Error('O servidor não confirmou a autenticação.');
+            }
+
+            return dados;
+        }
+
+        formLogin.addEventListener('submit', async (evento) => {
+            evento.preventDefault();
+            limparMensagem();
+
+            const botao = formLogin.querySelector('button');
+
+            botao.disabled = true;
+            botao.textContent = 'Entrando...';
+
+            try {
+                await enviarFormulario('/login', formLogin);
+                window.location.href = '/';
+            } catch (erro) {
+                mostrarMensagem(erro.message);
+            } finally {
+                botao.disabled = false;
+                botao.textContent = 'Entrar';
+            }
+        });
+
+        formCadastro.addEventListener('submit', async (evento) => {
+            evento.preventDefault();
+            limparMensagem();
+
+            const senha = formCadastro.querySelector('[name="senha"]').value;
+            const confirmarSenha = formCadastro.querySelector('[name="confirmarSenha"]').value;
+
+            if (senha !== confirmarSenha) {
+                mostrarMensagem('As senhas não são iguais.');
+                return;
+            }
+
+            const botao = formCadastro.querySelector('button');
+
+            botao.disabled = true;
+            botao.textContent = 'Criando conta...';
+
+            try {
+                await enviarFormulario('/cadastro', formCadastro);
+                window.location.href = '/';
+            } catch (erro) {
+                mostrarMensagem(erro.message);
+            } finally {
+                botao.disabled = false;
+                botao.textContent = 'Criar conta';
+            }
+        });
+    </script>
 </body>
 </html>

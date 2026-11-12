@@ -1,448 +1,762 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <title>Perfil - Tyler, The Creator | SoundHate</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resonanse | Descubra músicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .capa {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: #e9ecef;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nome-artista {
+            color: #198754;
+            text-decoration: none;
+        }
+
+        .nome-artista:hover {
+            text-decoration: underline;
+        }
+
+        .nota-destaque {
+            color: #198754;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .avaliacao-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .comentarios-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .comentario {
+            border-bottom: 1px solid #dee2e6;
+            padding: 16px 0;
+        }
+
+        .comentario:last-child {
+            border-bottom: none;
+        }
+
+        .comentario-nome {
+            font-weight: 700;
+        }
+
+        .comentario-data {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .comentario-texto {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+    </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Descubra</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href="/album">Álbuns</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="/singles">Singles</a>
-</li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Gêneros
-          </a>
-          <ul class="dropdown-menu">
-<li><a class="dropdown-item" href="/trap">Trap</a></li>
-   <li><a class="dropdown-item" href="/R&B">R&B</a></li>
-  <li><a class="dropdown-item" href="/rap">Rap</a></li>
-          </ul>
-        </li>
-      </ul>
-<form class="d-flex" role="search" action="/buscar" method="GET">
-  <input
-    class="form-control me-2"
-    type="search"
-    name="q"
-    placeholder="Pesquisar"
-    aria-label="Pesquisar"
-  >
-
-  <button class="btn btn-outline-success" type="submit">
-    ⌕
-  </button>
-</form>
-    </div>
-  </div>
-</nav>
-
-<body> 
-<h3>Álbuns</h3>
-
- <div class="container mt-5">
-    <div class="row">
-
-<div class="col-sm-4">
-
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e9/Tyler_The_Creator_-_Igor.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original">
-
-    <div class="card-body">
-
-      <h5 class="card-title">
-        <a href="/igor" style="text-decoration: none; color: inherit;">
-          Igor
-        </a>
-      </h5>
-
-      <p class="card-text">
-    <a href="/tyler" style="text-decoration: none; color: inherit;">
-        Tyler, the Creator
-    </a>
-</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>10/10</span>
-      </p>
-
-      <button 
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#modalIgor">
-        Avalie
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-      <div class="col-sm-4">
-
-        <div class="card" style="width: 18rem;">
-
-          <img src="https://i.scdn.co/image/ab67616d0000b273eb021b18fcead1189954756d">
-
-          <div class="card-body">
-
-            <h5 class="card-title">Caos</h5>
-
-            <p class="card-text">Alee</p>
-
-            <p class="mb-2">
-              <strong>Nota: </strong>
-              <span>9/10</span>
-            </p>
-
-            <button 
-              type="button"
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#modalCaos">
-              Avalie
-            </button>
-
-          </div>
-        </div>
-
-      </div>
-
-
-
-      <div class="col-sm-4">
-
-        <div class="card" style="width: 18rem;">
-
-          <img src="https://i.scdn.co/image/ab67616d0000b2737aa8783ad8def37cc548a9cf">
-
-          <div class="card-body">
-
-            <h5 class="card-title">Freudian</h5>
-
-            <p class="card-text">Daniel Caesar</p>
-
-            <p class="mb-2">
-              <strong>Nota: </strong>
-              <span>9/10</span>
-            </p>
-
-            <button 
-              type="button"
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#modalFreudian">
-              Avalie
-            </button>
-
-          </div>
-        </div>
-
-      </div>
-
-
-      <div class="container mt-5">
-
-        <div class="row">
-
-          <div class="col-sm-4">
-
-            <div class="card" style="width: 18rem;">
-
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWlKt-V8-CppBPEwqmg5Tm3OGSOiB8BOkxGMfZ6VQw3Q&s=10">
-
-              <div class="card-body">
-
-                <h5 class="card-title">Chromakopia</h5>
-
-              <p class="card-text">
-    <a href="/tyler" style="text-decoration: none; color: inherit;">
-        Tyler, the Creator
-    </a>
-</p>
-
-                <p class="mb-2">
-                  <strong>Nota: </strong>
-                  <span>8/10</span>
-                </p>
-
-                <button 
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modalChromakopia">
-                  Avalie
-                </button>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-  </div>
-
-</div>
-
-
-
-
-<div class="modal fade" id="modalIgor" tabindex="-1">
-
-  <div class="modal-dialog modal-dialog-centered">
-
-    <div class="modal-content">
-
-      <div class="modal-header">
-
-        <h5 class="modal-title">
-          Avaliar Igor
-        </h5>
-
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-
-      </div>
-
-      <div class="modal-body text-center">
-
-        <h5>Digite sua nota para o álbum</h5>
-
-        <p class="text-muted">
-          A nota deve estar entre 0 e 10.
-        </p>
-
-        <input 
-          type="number"
-          class="form-control text-center fs-4"
-          min="0"
-          max="10"
-          step="0.5"
-          placeholder="0 - 10">
-
-      </div>
-
-      <div class="modal-footer">
-
-        <button 
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal">
-          Cancelar
-        </button>
-
-        <button 
-          type="button"
-          class="btn btn-primary">
-          Enviar avaliação
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<div class="modal fade" id="modalCaos" tabindex="-1">
-
-  <div class="modal-dialog modal-dialog-centered">
-
-    <div class="modal-content">
-
-      <div class="modal-header">
-
-        <h5 class="modal-title">
-          Avaliar Caos
-        </h5>
-
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-
-      </div>
-
-      <div class="modal-body text-center">
-
-        <h5>Digite sua nota para o álbum</h5>
-
-        <p class="text-muted">
-          A nota deve estar entre 0 e 10.
-        </p>
-
-        <input 
-          type="number"
-          class="form-control text-center fs-4"
-          min="0"
-          max="10"
-          step="0.5"
-          placeholder="0 - 10">
-
-      </div>
-
-      <div class="modal-footer">
-
-        <button 
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal">
-          Cancelar
-        </button>
-
-        <button 
-          type="button"
-          class="btn btn-primary">
-          Enviar avaliação
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<div class="modal fade" id="modalFreudian" tabindex="-1">
-
-  <div class="modal-dialog modal-dialog-centered">
-
-    <div class="modal-content">
-
-      <div class="modal-header">
-
-        <h5 class="modal-title">
-          Avaliar Freudian
-        </h5>
-
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-
-      </div>
-
-      <div class="modal-body text-center">
-
-        <h5>Digite sua nota para o álbum</h5>
-
-        <p class="text-muted">
-          A nota deve estar entre 0 e 10.
-        </p>
-
-        <input 
-          type="number"
-          class="form-control text-center fs-4"
-          min="0"
-          max="10"
-          step="0.5"
-          placeholder="0 - 10">
-
-      </div>
-
-      <div class="modal-footer">
-
-        <button 
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal">
-          Cancelar
-        </button>
-
-        <button 
-          type="button"
-          class="btn btn-primary">
-          Enviar avaliação
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<div class="modal fade" id="modalChromakopia" tabindex="-1">
-
-  <div class="modal-dialog modal-dialog-centered">
-
-    <div class="modal-content">
-
-      <div class="modal-header">
-
-        <h5 class="modal-title">
-          Avaliar Chromakopia
-        </h5>
-
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-
-      </div>
-
-      <div class="modal-body text-center">
-
-        <h5>Digite sua nota para o álbum</h5>
-
-        <p class="text-muted">
-          A nota deve estar entre 0 e 10.
-        </p>
-
-        <input 
-          type="number"
-          class="form-control text-center fs-4"
-          min="0"
-          max="10"
-          step="0.5"
-          placeholder="0 - 10">
-
-      </div>
-
-      <div class="modal-footer">
-
-        <button 
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal">
-          Cancelar
-        </button>
-
-        <button 
-          type="button"
-          class="btn btn-primary">
-          Enviar avaliação
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
+    <div id="navbar-container"></div>
+
+    <main class="container mt-5">
+        <section id="secaoPesquisa">
+            <h2>Descubra músicas</h2>
+            <p>Pesquise artistas, álbuns e singles de diferentes estilos.</p>
+
+            <form id="formPesquisa" class="row g-2 mb-4">
+                <div class="col-md-8">
+                    <input type="search" id="pesquisa" class="form-control"
+                        placeholder="Digite o nome de um artista, álbum ou single" required>
+                </div>
+
+                <div class="col-md-2">
+                    <select id="tipo" class="form-select">
+                        <option value="todos">Todos</option>
+                        <option value="album">Álbuns</option>
+                        <option value="single">Singles</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success w-100">
+                        Pesquisar
+                    </button>
+                </div>
+            </form>
+
+            <div id="mensagem" class="mb-3"></div>
+            <div id="resultados" class="row g-4"></div>
+        </section>
+
+        <section id="secaoDetalhes" style="display: none;">
+            <div id="detalhes"></div>
+
+            <section class="mt-5 mb-5">
+                <h2 class="mb-4">Faixas</h2>
+                <div id="faixas"></div>
+            </section>
+
+            <hr class="my-5">
+
+            <section class="mb-5">
+                <h2 class="mb-4">Você também pode gostar</h2>
+                <div id="recomendados" class="row g-4"></div>
+            </section>
+
+            <hr class="my-5">
+
+            <section class="comentarios-container mb-5">
+                <h2 class="mb-4">Comentários</h2>
+
+                <form id="formComentario">
+                    <div class="mb-3">
+                        <label for="textoComentario" class="form-label">
+                            Compartilhe sua opinião sobre este lançamento
+                        </label>
+                        <textarea
+                            id="textoComentario"
+                            class="form-control"
+                            rows="4"
+                            maxlength="1000"
+                            placeholder="Escreva seu comentário..."
+                            required
+                        ></textarea>
+                        <div class="text-muted small text-end mt-1">
+                            Máximo de 1000 caracteres
+                        </div>
+                    </div>
+
+                    <button type="submit" id="botaoComentario" class="btn btn-success">
+                        Publicar comentário
+                    </button>
+                    <p id="mensagemComentario" class="small mt-3"></p>
+                </form>
+
+                <hr class="my-4">
+
+                <div id="listaComentarios">
+                    <p class="text-muted">Carregando comentários...</p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        const formulario = document.getElementById('formPesquisa');
+        const pesquisa = document.getElementById('pesquisa');
+        const tipo = document.getElementById('tipo');
+        const resultados = document.getElementById('resultados');
+        const mensagem = document.getElementById('mensagem');
+
+        let lancamentoAtual = null;
+        let tipoAtual = null;
+
+        function escapar(texto) {
+            return String(texto ?? '').replace(/[&<>"']/g, caractere => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            })[caractere]);
+        }
+
+        async function buscarAPI(url, opcoes = {}) {
+            const resposta = await fetch(url, opcoes);
+            const dados = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(dados.erro || 'Erro ao consultar a API.');
+            }
+
+            return dados;
+        }
+
+        function criarLinkArtista(artista) {
+            if (!artista || !artista.name) {
+                return 'Artista não informado';
+            }
+
+            if (!artista.id) {
+                return escapar(artista.name);
+            }
+
+            return `
+                <a href="/artista?id=${encodeURIComponent(artista.id)}" class="nome-artista">
+                    ${escapar(artista.name)}
+                </a>
+            `;
+        }
+
+        function obterTipoLancamento(item) {
+            const tipoLancamento = String(
+                item.record_type || item['primary-type'] || ''
+            ).toLowerCase();
+
+            return tipoLancamento === 'single' || item.album
+                ? 'single'
+                : 'album';
+        }
+
+        async function carregarNota(elemento, tipoItem, idItem) {
+            try {
+                const dados = await buscarAPI(
+                    `/api/avaliacoes/${tipoItem}/${encodeURIComponent(idItem)}`
+                );
+
+                elemento.textContent = dados.media !== null && dados.media !== undefined
+                    ? `★ ${Number(dados.media).toFixed(1)} (${dados.quantidade})`
+                    : 'Ainda sem avaliações';
+            } catch (erro) {
+                elemento.textContent = 'Avaliação indisponível';
+            }
+        }
+
+        function criarCardLancamento(item) {
+            const artista = item.artist || item.album?.artist || {};
+
+            const imagem = item.cover_xl ||
+                item.cover_big ||
+                item.cover_url ||
+                item.album?.cover_xl ||
+                item.album?.cover_big ||
+                'https://placehold.co/300x300?text=Sem+capa';
+
+            const data = item.release_date || item.album?.release_date;
+            const tipoLancamento = obterTipoLancamento(item);
+            const idDetalhes = item.album?.id || item.id;
+
+            const card = document.createElement('div');
+            card.className = 'col-6 col-md-4 col-lg-2';
+
+            card.innerHTML = `
+                <div class="card h-100 shadow-sm">
+                    <img
+                        src="${escapar(imagem)}"
+                        class="card-img-top capa"
+                        alt="Capa de ${escapar(item.title)}"
+                        onerror="this.onerror=null;this.src='https://placehold.co/300x300?text=Sem+capa'"
+                    >
+                    <div class="card-body">
+                        <h6 class="card-title">
+                            ${escapar(item.title)}
+                        </h6>
+                        <p class="card-text small">
+                            ${criarLinkArtista(artista)}
+                        </p>
+                        <p class="text-muted small">
+                            ${escapar(tipoLancamento)}
+                            ${data ? ' • ' + escapar(data.substring(0, 4)) : ''}
+                        </p>
+                        <p class="small mb-2 text-success nota-card">
+                            Carregando avaliação...
+                        </p>
+                        <a href="/album?id=${encodeURIComponent(idDetalhes)}"
+                           class="btn btn-sm btn-outline-success mt-2">
+                            Ver detalhes
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            const nota = card.querySelector('.nota-card');
+            carregarNota(nota, tipoLancamento, idDetalhes);
+
+            return card;
+        }
+
+        function embaralhar(lista) {
+            const copia = [...lista];
+
+            for (let i = copia.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copia[i], copia[j]] = [copia[j], copia[i]];
+            }
+
+            return copia;
+        }
+
+        async function carregarRecomendados(idAtual) {
+            const secao = document.getElementById('recomendados');
+
+            secao.innerHTML = '<p>Carregando recomendações...</p>';
+
+            try {
+                const [respostaAlbuns, respostaSingles] = await Promise.all([
+                    buscarAPI('/api/catalogo?tipo=album&limit=25'),
+                    buscarAPI('/api/catalogo?tipo=single&limit=25')
+                ]);
+
+                const albuns = respostaAlbuns.data || [];
+                const singles = respostaSingles.data || [];
+
+                const lancamentos = [
+                    ...albuns,
+                    ...singles
+                ].filter(item =>
+                    String(item.id) !== String(idAtual) &&
+                    String(item.album?.id) !== String(idAtual)
+                );
+
+                const selecionados = embaralhar(lancamentos).slice(0, 8);
+
+                secao.innerHTML = '';
+
+                if (!selecionados.length) {
+                    secao.innerHTML =
+                        '<p class="text-muted">Nenhuma recomendação encontrada.</p>';
+                    return;
+                }
+
+                selecionados.forEach(item => {
+                    secao.appendChild(criarCardLancamento(item));
+                });
+            } catch (erro) {
+                secao.innerHTML =
+                    '<p class="text-muted">Não foi possível carregar as recomendações.</p>';
+            }
+        }
+
+        async function carregarAvaliacao(tipoItem, idItem, container) {
+            try {
+                const dados = await buscarAPI(
+                    `/api/avaliacoes/${tipoItem}/${encodeURIComponent(idItem)}`
+                );
+
+                const media = dados.media !== null && dados.media !== undefined
+                    ? Number(dados.media).toFixed(1)
+                    : 'Ainda sem avaliações';
+
+                const quantidade = dados.quantidade || 0;
+                const minhaAvaliacao = dados.minhaAvaliacao;
+
+                container.innerHTML = `
+                    <div class="avaliacao-container">
+                        <h5>Avaliação da comunidade</h5>
+                        <p class="nota-destaque mb-1">
+                            ${media === 'Ainda sem avaliações' ? media : '★ ' + media + '/10'}
+                        </p>
+                        <p class="text-muted small">
+                            ${quantidade} avaliação(ões)
+                        </p>
+                        <hr>
+                        <h6>Sua avaliação</h6>
+
+                        <form id="formAvaliacao">
+                            <div class="row g-2 align-items-end">
+                                <div class="col-sm-6 col-md-4">
+                                    <label for="notaUsuario" class="form-label">
+                                        Escolha sua nota
+                                    </label>
+                                    <select id="notaUsuario" class="form-select" required>
+                                        ${Array.from({ length: 21 }, (_, i) => {
+                                            const valor = (i * 0.5).toFixed(1);
+                                            const selecionado = minhaAvaliacao !== null &&
+                                                minhaAvaliacao !== undefined &&
+                                                Number(minhaAvaliacao) === Number(valor);
+
+                                            return `
+                                                <option value="${valor}" ${selecionado ? 'selected' : ''}>
+                                                    ${valor.replace('.', ',')}
+                                                </option>
+                                            `;
+                                        }).join('')}
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 col-md-4">
+                                    <button type="submit" class="btn btn-success w-100">
+                                        ${minhaAvaliacao !== null && minhaAvaliacao !== undefined
+                                            ? 'Atualizar avaliação'
+                                            : 'Enviar avaliação'}
+                                    </button>
+                                </div>
+                            </div>
+                            <p id="mensagemAvaliacao" class="small mt-3 mb-0"></p>
+                        </form>
+                    </div>
+                `;
+
+                const formularioAvaliacao = container.querySelector('#formAvaliacao');
+                const mensagemAvaliacao = container.querySelector('#mensagemAvaliacao');
+
+                formularioAvaliacao.addEventListener('submit', async evento => {
+                    evento.preventDefault();
+
+                    const nota = Number(
+                        container.querySelector('#notaUsuario').value
+                    );
+
+                    const botao = formularioAvaliacao.querySelector('button');
+
+                    botao.disabled = true;
+                    mensagemAvaliacao.textContent = 'Salvando avaliação...';
+
+                    try {
+                        await buscarAPI('/api/avaliacoes', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                tipo: tipoItem,
+                                itemId: String(idItem),
+                                nota
+                            })
+                        });
+
+                        await carregarAvaliacao(tipoItem, idItem, container);
+                    } catch (erro) {
+                        mensagemAvaliacao.textContent = erro.message;
+                        botao.disabled = false;
+                    }
+                });
+            } catch (erro) {
+                container.innerHTML = `
+                    <div class="alert alert-warning">
+                        Não foi possível carregar as avaliações: ${escapar(erro.message)}
+                    </div>
+                `;
+            }
+        }
+
+        function formatarData(data) {
+            if (!data) return 'Data não informada';
+
+            return new Date(data).toLocaleString('pt-BR', {
+                dateStyle: 'short',
+                timeStyle: 'short'
+            });
+        }
+
+        async function carregarComentarios() {
+            const lista = document.getElementById('listaComentarios');
+
+            lista.innerHTML = '<p class="text-muted">Carregando comentários...</p>';
+
+            try {
+                const dados = await buscarAPI(
+                    `/api/comentarios/${tipoAtual}/${encodeURIComponent(lancamentoAtual)}`
+                );
+
+                const comentarios = dados.comentarios || [];
+
+                if (!comentarios.length) {
+                    lista.innerHTML = `
+                        <p class="text-muted">
+                            Ainda não há comentários. Seja o primeiro a comentar!
+                        </p>
+                    `;
+                    return;
+                }
+
+                lista.innerHTML = '';
+
+                comentarios.forEach(comentario => {
+                    const elemento = document.createElement('div');
+                    elemento.className = 'comentario';
+
+                    elemento.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-start gap-3">
+                            <div>
+                                <div class="comentario-nome">
+                                    ${escapar(comentario.nome || 'Usuário')}
+                                </div>
+                                <div class="comentario-data">
+                                    ${escapar(formatarData(comentario.criado_em))}
+                                </div>
+                            </div>
+                            ${comentario.meuComentario ? `
+                                <button
+                                    class="btn btn-sm btn-outline-danger"
+                                    data-excluir="${Number(comentario.id)}"
+                                >
+                                    Excluir
+                                </button>
+                            ` : ''}
+                        </div>
+                        <p class="comentario-texto mt-3 mb-0">
+                            ${escapar(comentario.comentario)}
+                        </p>
+                    `;
+
+                    lista.appendChild(elemento);
+                });
+
+                lista.querySelectorAll('[data-excluir]').forEach(botao => {
+                    botao.addEventListener('click', () => {
+                        excluirComentario(botao.dataset.excluir);
+                    });
+                });
+            } catch (erro) {
+                lista.innerHTML = `
+                    <p class="text-danger">
+                        Não foi possível carregar os comentários: ${escapar(erro.message)}
+                    </p>
+                `;
+            }
+        }
+
+        document.getElementById('formComentario').addEventListener('submit', async evento => {
+            evento.preventDefault();
+
+            const campo = document.getElementById('textoComentario');
+            const botao = document.getElementById('botaoComentario');
+            const mensagemComentario = document.getElementById('mensagemComentario');
+
+            const comentario = campo.value.trim();
+
+            if (!comentario) {
+                mensagemComentario.textContent = 'Escreva um comentário antes de publicar.';
+                return;
+            }
+
+            botao.disabled = true;
+            mensagemComentario.textContent = 'Publicando comentário...';
+
+            try {
+                await buscarAPI('/api/comentarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        tipo: tipoAtual,
+                        itemId: String(lancamentoAtual),
+                        comentario
+                    })
+                });
+
+                campo.value = '';
+                mensagemComentario.textContent = 'Comentário publicado com sucesso!';
+
+                await carregarComentarios();
+            } catch (erro) {
+                mensagemComentario.textContent = erro.message;
+            } finally {
+                botao.disabled = false;
+            }
+        });
+
+        async function excluirComentario(id) {
+            if (!confirm('Tem certeza de que deseja excluir este comentário?')) {
+                return;
+            }
+
+            try {
+                await buscarAPI(`/api/comentarios/${id}`, {
+                    method: 'DELETE'
+                });
+
+                await carregarComentarios();
+            } catch (erro) {
+                alert(erro.message);
+            }
+        }
+
+        async function carregarDetalhes(id) {
+            document.getElementById('secaoPesquisa').style.display = 'none';
+
+            const secao = document.getElementById('secaoDetalhes');
+            const detalhes = document.getElementById('detalhes');
+            const faixas = document.getElementById('faixas');
+
+            secao.style.display = 'block';
+            detalhes.innerHTML = '<p>Carregando informações do lançamento...</p>';
+
+            try {
+                const lancamento = await buscarAPI(
+                    `/api/lancamentos/${encodeURIComponent(id)}`
+                );
+
+                const artista = lancamento.artist || {};
+
+                const imagem = lancamento.cover_xl ||
+                    lancamento.cover_big ||
+                    lancamento.cover_medium ||
+                    'https://placehold.co/500x500?text=Sem+capa';
+
+                const data = lancamento.release_date || 'Não informada';
+
+                const genero = lancamento.genres?.data
+                    ?.map(item => item.name)
+                    .join(', ') || 'Não informado';
+
+                const tipoItem = obterTipoLancamento(lancamento);
+
+                lancamentoAtual = lancamento.id;
+                tipoAtual = tipoItem;
+
+                document.title = `${lancamento.title} | Resonanse`;
+
+                detalhes.innerHTML = `
+                    <a href="/" class="btn btn-outline-secondary mb-4">
+                        Voltar ao início
+                    </a>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <img
+                                src="${escapar(imagem)}"
+                                class="img-fluid rounded shadow"
+                                alt="Capa de ${escapar(lancamento.title)}"
+                                onerror="this.onerror=null;this.src='https://placehold.co/500x500?text=Sem+capa'"
+                            >
+                        </div>
+
+                        <div class="col-md-8">
+                            <h1>${escapar(lancamento.title)}</h1>
+                            <h4 class="text-muted mb-4">
+                                ${criarLinkArtista(artista)}
+                            </h4>
+                            <p>
+                                <strong>Tipo:</strong>
+                                ${escapar(tipoItem === 'single' ? 'Single' : 'Álbum')}
+                            </p>
+                            <p>
+                                <strong>Data de lançamento:</strong>
+                                ${escapar(data)}
+                            </p>
+                            <p>
+                                <strong>Faixas:</strong>
+                                ${escapar(lancamento.nb_tracks || 'Não informado')}
+                            </p>
+                            <p>
+                                <strong>Gêneros:</strong>
+                                ${escapar(genero)}
+                            </p>
+                            <div id="avaliacaoLancamento">
+                                <p>Carregando avaliações...</p>
+                            </div>
+                            <a href="${escapar(lancamento.link || '#')}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-outline-success">
+                                Ouvir no Deezer
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                await carregarAvaliacao(
+                    tipoItem,
+                    lancamento.id,
+                    document.getElementById('avaliacaoLancamento')
+                );
+
+                const listaFaixas = lancamento.tracks?.data || [];
+
+                faixas.innerHTML = '';
+
+                if (!listaFaixas.length) {
+                    faixas.innerHTML =
+                        '<p class="text-muted">Nenhuma faixa encontrada.</p>';
+                } else {
+                    listaFaixas.forEach((faixa, indice) => {
+                        const linha = document.createElement('div');
+
+                        const duracao = faixa.duration
+                            ? `${Math.floor(faixa.duration / 60)}:${String(faixa.duration % 60).padStart(2, '0')}`
+                            : '--:--';
+
+                        linha.className =
+                            'd-flex justify-content-between align-items-center border-bottom py-3';
+
+                        linha.innerHTML = `
+                            <div>
+                                <strong>${indice + 1}. ${escapar(faixa.title)}</strong>
+                            </div>
+                            <span class="text-muted">
+                                ${duracao}
+                            </span>
+                        `;
+
+                        faixas.appendChild(linha);
+                    });
+                }
+
+                await carregarRecomendados(lancamento.id);
+                await carregarComentarios();
+            } catch (erro) {
+                detalhes.innerHTML = `
+                    <p class="text-danger">${escapar(erro.message)}</p>
+                    <a href="/" class="btn btn-outline-secondary">
+                        Voltar ao início
+                    </a>
+                `;
+            }
+        }
+
+        formulario.addEventListener('submit', async evento => {
+            evento.preventDefault();
+
+            const termo = pesquisa.value.trim();
+            const filtro = tipo.value;
+
+            if (!termo) return;
+
+            resultados.innerHTML = '';
+            mensagem.textContent = 'Pesquisando...';
+
+            try {
+                const dados = await buscarAPI(
+                    `/api/lancamentos?q=${encodeURIComponent(termo)}&tipo=${filtro}&limit=25`
+                );
+
+                const lista = dados.data || [];
+
+                if (!lista.length) {
+                    mensagem.textContent = 'Nenhum lançamento encontrado.';
+                    return;
+                }
+
+                mensagem.textContent =
+                    `${lista.length} resultado(s) encontrado(s).`;
+
+                lista.forEach(lancamento => {
+                    resultados.appendChild(criarCardLancamento(lancamento));
+                });
+            } catch (erro) {
+                mensagem.textContent = erro.message;
+            }
+        });
+
+        const parametros = new URLSearchParams(window.location.search);
+        const idAlbum = parametros.get('id');
+
+        if (idAlbum) {
+            carregarDetalhes(idAlbum);
+        }
+    </script>
+
+    <script src="/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

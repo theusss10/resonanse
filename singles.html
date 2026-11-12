@@ -1,167 +1,331 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <title>singles | SoundHate</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Singles | Resonanse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card-single {
+            height: 100%;
+            transition: transform 0.2s;
+            border: none;
+        }
+
+        .card-single:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-single img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .nota-card {
+            font-size: 0.9rem;
+            color: #198754;
+        }
+
+        .nome-artista {
+            color: #198754;
+            text-decoration: none;
+        }
+
+        .nome-artista:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Descubra</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href="/album">Álbuns</a>
-</li>
-      <li class="nav-item">
-  <a class="nav-link" href="/singles">Singles</a>
-</li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Gêneros
-          </a>
-          <ul class="dropdown-menu">
-<li><a class="dropdown-item" href="/trap">Trap</a></li>
-   <li><a class="dropdown-item" href="/R&B">R&B</a></li>
-  <li><a class="dropdown-item" href="/rap">Rap</a></li>
-          </ul>
-        </li>
-      </ul>
-<form class="d-flex" role="search" action="/buscar" method="GET">
-  <input
-    class="form-control me-2"
-    type="search"
-    name="q"
-    placeholder="Pesquisar"
-    aria-label="Pesquisar"
-  >
+<div id="navbar-container"></div>
 
-  <button class="btn btn-outline-success" type="submit">
-    ⌕
-  </button>
-</form>
-</nav>
+<main class="container mt-5">
+    <h2 class="mb-4">Singles</h2>
 
-<body> 
-
-<h2 class="mb-4">
-  Singles
-</h2>
-
-<div class="container mt-5">
-  <div class="row">
-
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaPFC1RpChST7M88GFTxwyHMewwnCqMNZhGDbj6XQ6-A&s=10">
-
-    <div class="card-body">
-      <h5 class="card-title">Best interest</h5>
-  <p class="card-text">
-    <a href="/tyler" style="text-decoration: none; color: inherit;">
-        Tyler, the Creator
-    </a>
-</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>10/10</span>
-      </p>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBestInterest">
-        Avalie
-      </button>
+    <div id="listaSingles" class="row g-4">
+        <p>Carregando singles...</p>
     </div>
-  </div>
-</div>
+</main>
 
+<div class="modal fade" id="modalAvaliacao" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tituloModal">Avaliar single</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
 
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
+            <div class="modal-body text-center">
+                <p class="text-muted">Escolha uma nota entre 0 e 10.</p>
 
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwDGjRq6egwS-E4DkzZwZWczuJzLUtyJnYGpP80tSaAQ&s=10">
+                <select id="notaSelecionada" class="form-select text-center fs-4">
+                    <option value="">Selecione sua nota</option>
+                    <option value="0">0</option>
+                    <option value="0.5">0,5</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1,5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2,5</option>
+                    <option value="3">3</option>
+                    <option value="3.5">3,5</option>
+                    <option value="4">4</option>
+                    <option value="4.5">4,5</option>
+                    <option value="5">5</option>
+                    <option value="5.5">5,5</option>
+                    <option value="6">6</option>
+                    <option value="6.5">6,5</option>
+                    <option value="7">7</option>
+                    <option value="7.5">7,5</option>
+                    <option value="8">8</option>
+                    <option value="8.5">8,5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9,5</option>
+                    <option value="10">10</option>
+                </select>
 
-    <div class="card-body">
-      <h5 class="card-title">That guy</h5>
-<p class="card-text">
-    <a href="/tyler" style="text-decoration: none; color: inherit;">
-        Tyler, the Creator
-    </a>
-</p>
+                <p id="mensagemAvaliacao" class="mt-3 mb-0"></p>
+            </div>
 
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>8/10</span>
-      </p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancelar
+                </button>
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalThatGuy">
-        Avalie
-      </button>
+                <button type="button" class="btn btn-primary" id="enviarAvaliacao">
+                    Enviar avaliação
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-  </div>
-</div>
+<script>
+let singleSelecionado = null;
 
- <div class="modal fade" id="modalBestInterest" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+const modalAvaliacao = new bootstrap.Modal(
+    document.getElementById('modalAvaliacao')
+);
 
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Best Interest</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
+function escapar(texto) {
+    return String(texto ?? '').replace(/[&<>"']/g, caractere => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    })[caractere]);
+}
 
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o single</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
+async function buscarAPI(url, opcoes = {}) {
+    const resposta = await fetch(url, opcoes);
+    const dados = await resposta.json();
 
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
+    if (!resposta.ok) {
+        throw new Error(
+            dados.erro || dados.error || 'Não foi possível completar a solicitação.'
+        );
+    }
 
-</div>
+    return dados;
+}
 
-  </div>
-</div>
+async function carregarNota(elemento, id) {
+    try {
+        const dados = await buscarAPI(
+            `/api/avaliacoes/single/${encodeURIComponent(id)}`
+        );
 
-<div class="modal fade" id="modalThatGuy" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+        if (dados.quantidade > 0) {
+            elemento.textContent =
+                `★ ${Number(dados.media).toFixed(1)}/10 (${dados.quantidade} avaliações)`;
+        } else {
+            elemento.textContent = 'Ainda sem avaliações';
+        }
+    } catch (erro) {
+        elemento.textContent = 'Não foi possível carregar a nota';
+    }
+}
 
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar That Guy</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
+function criarCardSingle(single) {
+    const id = single.id;
 
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o single</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
+    const capa = single.cover_xl ||
+        single.cover_big ||
+        single.cover_medium ||
+        single.cover_url ||
+        'https://placehold.co/300x300?text=Sem+capa';
 
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
+    const artista = single.artist?.name ||
+        single.artist_name ||
+        'Artista desconhecido';
 
-</div>
+    const idArtista = single.artist?.id || single.artist_id;
 
-  </div>
-</div>
+    const coluna = document.createElement('div');
+    coluna.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
+
+    coluna.innerHTML = `
+        <div class="card card-single shadow-sm">
+            <img
+                src="${escapar(capa)}"
+                class="card-img-top"
+                alt="Capa de ${escapar(single.title || 'single')}"
+                onerror="this.onerror=null;this.src='https://placehold.co/300x300?text=Sem+capa'"
+            >
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">
+                    ${escapar(single.title || 'Single sem título')}
+                </h5>
+
+                <p class="card-text">
+                    ${idArtista ? `
+                        <a href="/artista?id=${encodeURIComponent(idArtista)}"
+                           class="nome-artista">
+                            ${escapar(artista)}
+                        </a>
+                    ` : escapar(artista)}
+                </p>
+
+                <p class="nota-card mb-3 nota-single">
+                    Carregando nota...
+                </p>
+
+                <a href="/album?id=${encodeURIComponent(id)}"
+                   class="btn btn-outline-success mb-2">
+                    Ver single
+                </a>
+
+                <button class="btn btn-success mt-auto" type="button">
+                    Avaliar
+                </button>
+            </div>
+        </div>
+    `;
+
+    coluna.querySelector('button').addEventListener('click', () => {
+        singleSelecionado = id;
+
+        document.getElementById('tituloModal').textContent =
+            `Avaliar ${single.title || 'single'}`;
+
+        document.getElementById('notaSelecionada').value = '';
+        document.getElementById('mensagemAvaliacao').textContent = '';
+
+        modalAvaliacao.show();
+    });
+
+    carregarNota(coluna.querySelector('.nota-single'), id);
+
+    return coluna;
+}
+
+async function carregarSingles() {
+    const lista = document.getElementById('listaSingles');
+
+    try {
+        const dados = await buscarAPI(
+            '/api/catalogo?tipo=single&limit=100'
+        );
+
+        const singles = Array.isArray(dados)
+            ? dados
+            : dados.data || dados.lancamentos || [];
+
+        lista.innerHTML = '';
+
+        if (singles.length === 0) {
+            lista.innerHTML = `
+                <p class="text-muted">Nenhum single encontrado.</p>
+            `;
+            return;
+        }
+
+        singles.forEach(single => {
+            lista.appendChild(criarCardSingle(single));
+        });
+    } catch (erro) {
+        lista.innerHTML = `
+            <div class="alert alert-danger">
+                Não foi possível carregar os singles: ${escapar(erro.message)}
+            </div>
+        `;
+
+        console.error(erro);
+    }
+}
+
+document.getElementById('enviarAvaliacao').addEventListener('click', async () => {
+    const nota = document.getElementById('notaSelecionada').value;
+    const mensagem = document.getElementById('mensagemAvaliacao');
+    const botao = document.getElementById('enviarAvaliacao');
+
+    if (nota === '') {
+        mensagem.textContent = 'Selecione uma nota.';
+        mensagem.className = 'mt-3 text-danger';
+        return;
+    }
+
+    botao.disabled = true;
+    mensagem.textContent = 'Salvando avaliação...';
+    mensagem.className = 'mt-3 text-muted';
+
+    try {
+        await buscarAPI('/api/avaliacoes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tipo: 'single',
+                itemId: String(singleSelecionado),
+                nota: Number(nota)
+            })
+        });
+
+        mensagem.textContent = 'Avaliação enviada com sucesso!';
+        mensagem.className = 'mt-3 text-success';
+
+        const elementoNota = document.querySelector('.nota-single');
+
+        if (elementoNota && singleSelecionado) {
+            const card = [...document.querySelectorAll('.card-single')]
+                .find(elemento => {
+                    const link = elemento.querySelector('a[href^="/album?id="]');
+                    return link && new URL(link.href).searchParams.get('id') === String(singleSelecionado);
+                });
+
+            if (card) {
+                await carregarNota(
+                    card.querySelector('.nota-single'),
+                    singleSelecionado
+                );
+            }
+        }
+
+        setTimeout(() => modalAvaliacao.hide(), 800);
+    } catch (erro) {
+        mensagem.textContent = erro.message;
+        mensagem.className = 'mt-3 text-danger';
+    } finally {
+        botao.disabled = false;
+    }
+});
+
+carregarSingles();
+</script>
+
+<script src="/navbar.js"></script>
 
 </body>
 </html>

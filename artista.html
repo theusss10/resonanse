@@ -1,546 +1,615 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <title>Albuns | SoundHate</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Artista | Resonanse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .foto-artista {
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 12px;
+            background-color: #e9ecef;
+        }
+
+        .card-img-top {
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nome-artista {
+            color: #198754;
+            text-decoration: none;
+        }
+
+        .nome-artista:hover {
+            text-decoration: underline;
+        }
+
+        .nota-destaque {
+            color: #198754;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .avaliacao-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .comentarios-container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 22px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .comentario {
+            border-bottom: 1px solid #dee2e6;
+            padding: 16px 0;
+        }
+
+        .comentario:last-child {
+            border-bottom: none;
+        }
+
+        .comentario-nome {
+            font-weight: 700;
+        }
+
+        .comentario-data {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .comentario-texto {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+    </style>
 </head>
 <body>
+    <div id="navbar-container"></div>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Descubra</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href="/album">Álbuns</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="/singles">Singles</a>
-</li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Gêneros
-          </a>
-          <ul class="dropdown-menu">
-<li><a class="dropdown-item" href="/trap">Trap</a></li>
-   <li><a class="dropdown-item" href="/R&B">R&B</a></li>
-  <li><a class="dropdown-item" href="/rap">Rap</a></li>
-          </ul>
-        </li>
-      </ul>
-<form class="d-flex" role="search" action="/buscar" method="GET">
-  <input
-    class="form-control me-2"
-    type="search"
-    name="q"
-    placeholder="Pesquisar"
-    aria-label="Pesquisar"
-  >
-
-  <button class="btn btn-outline-success" type="submit">
-    ⌕
-  </button>
-</form>
-    </div>
-  </div>
-</nav>
-
-<div style="display: flex; align-items: flex-start; gap: 30px; margin-top: 30px;">
-
-  <div class="card" style="width: 28rem;">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8fUu1f9ihIHGIc9IO4Io6asJIhF3W43tenfIEFLJta1hEOKeUr52xSYiAZVyPBssOqNY18PR4MX3vP2JcB6-yZ7f7KWNe2QRb1iIVL8YO&s=10" class="card-img-top" alt="...">
-
-<div class="card-body">
-  <h5 class="card-title">Tyler, the creator</h5>
-</div>
-
-<ul class="list-group list-group-flush">
-</ul>
-
-  </div>
-
-  <div style="padding: 20px; max-width: 500px;">
-
-<h2 class="mb-4">
-  Informações do artista
-</h2>
-
-<p>
-  <strong>Nota:</strong>
-  9/10
-</p>
-
-<p>
-  <strong>Gênero:</strong>
-  Hip-Hop / Rap / R&B
-</p>
-
-<p>
-  <strong>Descrição:</strong><br>
-  Tyler, The Creator é um rapper, cantor, produtor e designer
-  americano conhecido por seu estilo criativo, suas produções
-  marcantes e sua mistura de diferentes gêneros musicais.
-</p>
-
-<button 
-  type="button"
-  class="btn btn-primary"
-  data-bs-toggle="modal"
-  data-bs-target="#modalArtista">
-  Avalie
-</button>
-
-  </div>
-
-</div>
-
-<br>
-
-<h2 class="mb-4">
-  Álbuns
-</h2>
-
-<br>
-
-<div class="container mt-5">
-  <div class="row">
-
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://upload.wikimedia.org/wikipedia/pt/e/e9/Tyler_The_Creator_-_Igor.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original">
-
-    <div class="card-body">
-     <h5 class="card-title">
-    <a href="/igor" style="text-decoration: none; color: inherit;">
-        Igor
-    </a>
-</h5>
-      <p class="card-text">Tyler, the Creator</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>10/10</span>
-      </p>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalIgor">
-        Avalie
-      </button>
-    </div>
-  </div>
-</div>
-
-
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWlKt-V8-CppBPEwqmg5Tm3OGSOiB8BOkxGMfZ6VQw3Q&s=10">
-
-    <div class="card-body">
-      <h5 class="card-title">Chromakopia</h5>
-      <p class="card-text">Tyler, the creator</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>8/10</span>
-      </p>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalChromakopia">
-        Avalie
-      </button>
-    </div>
-  </div>
-</div>
-
-
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRerws3TjEuXBQKlCHpZAcF1haxKW7Nvm3_66hdSGN_Q&s=10">
-
-    <div class="card-body">
-      <h5 class="card-title">Flower boy</h5>
-      <p class="card-text">Tyler, the creator</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>8/10</span>
-      </p>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFlowerBoy">
-        Avalie
-      </button>
-    </div>
-  </div>
-</div>
-
-
-<div class="container mt-5">
-  <div class="row">
-
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-
-        <img src="https://upload.wikimedia.org/wikipedia/pt/d/d3/Call_Me_If_You_Get_Lost_album_cover.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original">
-
-        <div class="card-body">
-          <h5 class="card-title">Call me if you get lost</h5>
-          <p class="card-text">Tyler, the Creator</p>
-
-          <p class="mb-2">
-            <strong>Nota: </strong>
-            <span>9/10</span>
-          </p>
-
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCallMe">
-            Avalie
-          </button>
+    <main class="container mt-5">
+        <div id="informacoesArtista">
+            <p>Carregando artista...</p>
         </div>
-      </div>
-    </div>
 
-
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-
-        <img src="https://m.media-amazon.com/images/I/71P2Su0fu2L._UF1000,1000_QL80_.jpg">
-
-        <div class="card-body">
-          <h5 class="card-title">Call me if you get lost: the state sale</h5>
-          <p class="card-text">Tyler, the creator</p>
-
-          <p class="mb-2">
-            <strong>Nota: </strong>
-            <span>9/10</span>
-          </p>
-
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalStateSale">
-            Avalie
-          </button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4SiYRo5kMaeUFXI_VcTrxxhs_mDiqaJ2YM_BKuqLc3A&s=10">
-
-        <div class="card-body">
-          <h5 class="card-title">Wolf</h5>
-          <p class="card-text">Tyler, the creator</p>
-
-          <p class="mb-2">
-            <strong>Nota: </strong>
-            <span>6/10</span>
-          </p>
-
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalWolf">
-            Avalie
-          </button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-  </div>
-</div>
-
-<br>
-
-<h2 class="mb-4">
-  Singles
-</h2>
-
-<div class="container mt-5">
-  <div class="row">
-
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaPFC1RpChST7M88GFTxwyHMewwnCqMNZhGDbj6XQ6-A&s=10">
-
-    <div class="card-body">
-      <h5 class="card-title">Best interest</h5>
-      <p class="card-text">Tyler, the Creator</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>10/10</span>
-      </p>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBestInterest">
-        Avalie
-      </button>
-    </div>
-  </div>
-</div>
-
-
-<div class="col-sm-4">
-  <div class="card" style="width: 18rem;">
-
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwDGjRq6egwS-E4DkzZwZWczuJzLUtyJnYGpP80tSaAQ&s=10">
-
-    <div class="card-body">
-      <h5 class="card-title">That guy</h5>
-      <p class="card-text">Tyler, the creator</p>
-
-      <p class="mb-2">
-        <strong>Nota: </strong>
-        <span>8/10</span>
-      </p>
-
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalThatGuy">
-        Avalie
-      </button>
-    </div>
-  </div>
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalArtista" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-    
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Tyler, The Creator</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o artista</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-      Cancelar
-    </button>
-
-    <button type="button" class="btn btn-primary">
-      Enviar avaliação
-    </button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalIgor" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Igor</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o álbum</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div
-
-</div>
-</div>
-
-<div class="modal fade" id="modalChromakopia" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Chromakopia</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o álbum</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalFlowerBoy" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Flower Boy</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o álbum</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalCallMe" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Call Me If You Get Lost</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o álbum</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalStateSale" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Call Me If You Get Lost: The Estate Sale</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o álbum</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalWolf" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Wolf</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o álbum</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalBestInterest" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar Best Interest</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o single</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
-<div class="modal fade" id="modalThatGuy" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-  <div class="modal-header">
-    <h5 class="modal-title">Avaliar That Guy</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-  </div>
-
-  <div class="modal-body text-center">
-    <h5>Digite sua nota para o single</h5>
-    <p class="text-muted">A nota deve estar entre 0 e 10.</p>
-    <input type="number" class="form-control text-center fs-4" min="0" max="10" step="0.5" placeholder="0 - 10">
-  </div>
-
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Enviar avaliação</button>
-  </div>
-
-</div>
-
-  </div>
-</div>
-
+        <section class="mt-5">
+            <h2 class="mb-4">Álbuns</h2>
+            <div class="row g-4" id="albuns">
+                <p>Carregando álbuns...</p>
+            </div>
+        </section>
+
+        <section class="mt-5 mb-5">
+            <h2 class="mb-4">Singles</h2>
+            <div class="row g-4" id="singles">
+                <p>Carregando singles...</p>
+            </div>
+        </section>
+
+        <hr class="my-5">
+
+        <section class="comentarios-container mb-5">
+            <h2 class="mb-4">Comentários</h2>
+
+            <form id="formComentario">
+                <div class="mb-3">
+                    <label for="textoComentario" class="form-label">
+                        Compartilhe sua opinião sobre este artista
+                    </label>
+                    <textarea
+                        id="textoComentario"
+                        class="form-control"
+                        rows="4"
+                        maxlength="1000"
+                        placeholder="Escreva seu comentário..."
+                        required
+                    ></textarea>
+                    <div class="text-muted small text-end mt-1">
+                        Máximo de 1000 caracteres
+                    </div>
+                </div>
+
+                <button type="submit" id="botaoComentario" class="btn btn-success">
+                    Publicar comentário
+                </button>
+                <p id="mensagemComentario" class="small mt-3"></p>
+            </form>
+
+            <hr class="my-4">
+
+            <div id="listaComentarios">
+                <p class="text-muted">Carregando comentários...</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let artistaAtual = null;
+
+        function escapar(texto) {
+            return String(texto ?? '').replace(/[&<>"']/g, caractere => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            })[caractere]);
+        }
+
+        async function buscarAPI(url, opcoes = {}) {
+            const resposta = await fetch(url, opcoes);
+            const dados = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(dados.erro || dados.error || 'Erro ao consultar a API.');
+            }
+
+            return dados;
+        }
+
+        async function carregarNota(elemento, tipo, id) {
+            try {
+                const dados = await buscarAPI(
+                    `/api/avaliacoes/${tipo}/${encodeURIComponent(id)}`
+                );
+
+                elemento.textContent =
+                    dados.media !== null && dados.media !== undefined
+                        ? `★ ${Number(dados.media).toFixed(1)} (${dados.quantidade})`
+                        : 'Ainda sem avaliações';
+            } catch (erro) {
+                elemento.textContent = 'Avaliação indisponível';
+            }
+        }
+
+        async function carregarAvaliacaoArtista(id, container) {
+            try {
+                const dados = await buscarAPI(
+                    `/api/avaliacoes/artista/${encodeURIComponent(id)}`
+                );
+
+                const media = dados.media !== null && dados.media !== undefined
+                    ? Number(dados.media).toFixed(1)
+                    : 'Ainda sem avaliações';
+
+                const quantidade = dados.quantidade || 0;
+                const minhaAvaliacao = dados.minhaAvaliacao;
+
+                container.innerHTML = `
+                    <div class="avaliacao-container">
+                        <h5>Avaliação da comunidade</h5>
+                        <p class="nota-destaque mb-1">
+                            ${media === 'Ainda sem avaliações' ? media : '★ ' + media + '/10'}
+                        </p>
+                        <p class="text-muted small">
+                            ${quantidade} avaliação(ões)
+                        </p>
+                        <hr>
+                        <h6>Sua avaliação</h6>
+
+                        <form id="formAvaliacaoArtista">
+                            <div class="row g-2 align-items-end">
+                                <div class="col-sm-6 col-md-4">
+                                    <label for="notaArtista" class="form-label">
+                                        Escolha sua nota
+                                    </label>
+                                    <select id="notaArtista" class="form-select" required>
+                                        ${Array.from({ length: 21 }, (_, i) => {
+                                            const valor = (i * 0.5).toFixed(1);
+                                            const selecionado =
+                                                minhaAvaliacao !== null &&
+                                                minhaAvaliacao !== undefined &&
+                                                Number(minhaAvaliacao) === Number(valor);
+
+                                            return `
+                                                <option value="${valor}" ${selecionado ? 'selected' : ''}>
+                                                    ${valor.replace('.', ',')}
+                                                </option>
+                                            `;
+                                        }).join('')}
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 col-md-4">
+                                    <button type="submit" class="btn btn-success w-100">
+                                        ${minhaAvaliacao !== null && minhaAvaliacao !== undefined
+                                            ? 'Atualizar avaliação'
+                                            : 'Enviar avaliação'}
+                                    </button>
+                                </div>
+                            </div>
+                            <p id="mensagemAvaliacaoArtista" class="small mt-3 mb-0"></p>
+                        </form>
+                    </div>
+                `;
+
+                const formulario = container.querySelector('#formAvaliacaoArtista');
+                const mensagem = container.querySelector('#mensagemAvaliacaoArtista');
+
+                formulario.addEventListener('submit', async evento => {
+                    evento.preventDefault();
+
+                    const nota = Number(
+                        container.querySelector('#notaArtista').value
+                    );
+
+                    const botao = formulario.querySelector('button');
+
+                    botao.disabled = true;
+                    mensagem.textContent = 'Salvando avaliação...';
+
+                    try {
+                        await buscarAPI('/api/avaliacoes', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                tipo: 'artista',
+                                itemId: String(id),
+                                nota
+                            })
+                        });
+
+                        await carregarAvaliacaoArtista(id, container);
+                    } catch (erro) {
+                        mensagem.textContent = erro.message;
+                        botao.disabled = false;
+                    }
+                });
+            } catch (erro) {
+                container.innerHTML = `
+                    <div class="alert alert-warning">
+                        Não foi possível carregar as avaliações: ${escapar(erro.message)}
+                    </div>
+                `;
+            }
+        }
+
+        function criarCard(lancamento) {
+            const artista = typeof lancamento.artist === 'string'
+                ? lancamento.artist
+                : lancamento.artist?.name || 'Artista não informado';
+
+            const imagem = lancamento.cover_xl ||
+                lancamento.cover_big ||
+                lancamento.cover_medium ||
+                lancamento.cover_url ||
+                lancamento.image ||
+                'https://placehold.co/300x300?text=Sem+capa';
+
+            const tipo = lancamento.record_type === 'single'
+                ? 'single'
+                : 'album';
+
+            const data = lancamento.release_date || lancamento.date || '';
+            const id = lancamento.id;
+
+            const card = document.createElement('div');
+            card.className = 'col-6 col-md-4 col-lg-3';
+
+            card.innerHTML = `
+                <div class="card h-100 shadow-sm">
+                    <img
+                        src="${escapar(imagem)}"
+                        class="card-img-top"
+                        alt="Capa de ${escapar(lancamento.title)}"
+                        onerror="this.onerror=null;this.src='https://placehold.co/300x300?text=Sem+capa'"
+                    >
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            ${escapar(lancamento.title || 'Sem título')}
+                        </h5>
+                        <p class="card-text">
+                            ${escapar(artista)}
+                        </p>
+                        <p class="text-muted small">
+                            ${tipo === 'single' ? 'Single' : 'Álbum'}
+                            ${data ? ' • ' + escapar(data.substring(0, 4)) : ''}
+                        </p>
+                        <p class="small text-success nota-card">
+                            Carregando avaliação...
+                        </p>
+                        <a href="/album?id=${encodeURIComponent(id)}" class="btn btn-success btn-sm">
+                            Ver detalhes
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            carregarNota(card.querySelector('.nota-card'), tipo, id);
+
+            return card;
+        }
+
+        function exibirLancamentos(dados, elemento) {
+            elemento.innerHTML = '';
+
+            if (!dados.length) {
+                elemento.innerHTML = '<p class="text-muted">Nenhum lançamento encontrado.</p>';
+                return;
+            }
+
+            dados.forEach(lancamento => {
+                elemento.appendChild(criarCard(lancamento));
+            });
+        }
+
+        function formatarData(data) {
+            if (!data) return 'Data não informada';
+
+            return new Date(data).toLocaleString('pt-BR', {
+                dateStyle: 'short',
+                timeStyle: 'short'
+            });
+        }
+
+        async function carregarComentarios() {
+            const lista = document.getElementById('listaComentarios');
+
+            lista.innerHTML = '<p class="text-muted">Carregando comentários...</p>';
+
+            try {
+                const dados = await buscarAPI(
+                    `/api/comentarios/artista/${encodeURIComponent(artistaAtual)}`
+                );
+
+                const comentarios = dados.comentarios || [];
+
+                if (!comentarios.length) {
+                    lista.innerHTML = `
+                        <p class="text-muted">
+                            Ainda não há comentários. Seja o primeiro a comentar!
+                        </p>
+                    `;
+                    return;
+                }
+
+                lista.innerHTML = '';
+
+                comentarios.forEach(comentario => {
+                    const elemento = document.createElement('div');
+                    elemento.className = 'comentario';
+
+                    elemento.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-start gap-3">
+                            <div>
+                                <div class="comentario-nome">
+                                    ${escapar(comentario.nome || 'Usuário')}
+                                </div>
+                                <div class="comentario-data">
+                                    ${escapar(formatarData(comentario.criado_em))}
+                                </div>
+                            </div>
+
+                            ${comentario.meuComentario ? `
+                                <button
+                                    class="btn btn-sm btn-outline-danger"
+                                    data-excluir="${Number(comentario.id)}"
+                                >
+                                    Excluir
+                                </button>
+                            ` : ''}
+                        </div>
+                        <p class="comentario-texto mt-3 mb-0">
+                            ${escapar(comentario.comentario)}
+                        </p>
+                    `;
+
+                    lista.appendChild(elemento);
+                });
+
+                lista.querySelectorAll('[data-excluir]').forEach(botao => {
+                    botao.addEventListener('click', () => {
+                        excluirComentario(botao.dataset.excluir);
+                    });
+                });
+            } catch (erro) {
+                lista.innerHTML = `
+                    <p class="text-danger">
+                        Não foi possível carregar os comentários: ${escapar(erro.message)}
+                    </p>
+                `;
+            }
+        }
+
+        document.getElementById('formComentario').addEventListener('submit', async evento => {
+            evento.preventDefault();
+
+            const campo = document.getElementById('textoComentario');
+            const botao = document.getElementById('botaoComentario');
+            const mensagem = document.getElementById('mensagemComentario');
+
+            const comentario = campo.value.trim();
+
+            if (!comentario) {
+                mensagem.textContent = 'Escreva um comentário antes de publicar.';
+                return;
+            }
+
+            botao.disabled = true;
+            mensagem.textContent = 'Publicando comentário...';
+
+            try {
+                await buscarAPI('/api/comentarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        tipo: 'artista',
+                        itemId: String(artistaAtual),
+                        comentario
+                    })
+                });
+
+                campo.value = '';
+                mensagem.textContent = 'Comentário publicado com sucesso!';
+
+                await carregarComentarios();
+            } catch (erro) {
+                mensagem.textContent = erro.message;
+            } finally {
+                botao.disabled = false;
+            }
+        });
+
+        async function excluirComentario(id) {
+            if (!confirm('Tem certeza de que deseja excluir este comentário?')) {
+                return;
+            }
+
+            try {
+                await buscarAPI(`/api/comentarios/${id}`, {
+                    method: 'DELETE'
+                });
+
+                await carregarComentarios();
+            } catch (erro) {
+                alert(erro.message);
+            }
+        }
+
+        async function carregarArtista() {
+            const parametros = new URLSearchParams(window.location.search);
+            const id = parametros.get('id');
+
+            const informacoes = document.getElementById('informacoesArtista');
+            const albuns = document.getElementById('albuns');
+            const singles = document.getElementById('singles');
+
+            if (!id) {
+                informacoes.innerHTML = '<p class="text-danger">Nenhum artista foi selecionado.</p>';
+                albuns.innerHTML = '';
+                singles.innerHTML = '';
+                return;
+            }
+
+            artistaAtual = id;
+
+            try {
+                const artista = await buscarAPI(
+                    `/api/artistas/${encodeURIComponent(id)}`
+                );
+
+                document.title = `${artista.name} | Resonanse`;
+
+                const foto = artista.picture_xl ||
+                    artista.picture_big ||
+                    artista.picture_medium ||
+                    'https://placehold.co/400x400?text=Sem+foto';
+
+                informacoes.innerHTML = `
+                    <a href="/" class="btn btn-outline-secondary mb-4">
+                        Voltar ao início
+                    </a>
+
+                    <div class="row align-items-center g-4">
+                        <div class="col-12 col-md-4 text-center">
+                            <img
+                                src="${escapar(foto)}"
+                                alt="Foto de ${escapar(artista.name)}"
+                                class="foto-artista"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x400?text=Sem+foto'"
+                            >
+                        </div>
+
+                        <div class="col-12 col-md-8">
+                            <h1>${escapar(artista.name)}</h1>
+                            <p class="text-muted">Artista musical</p>
+                            <p>
+                                <strong>Quantidade de álbuns:</strong>
+                                ${escapar(artista.nb_album ?? 'Não informado')}
+                            </p>
+                            <p>
+                                <strong>Fãs no Deezer:</strong>
+                                ${artista.nb_fan != null
+                                    ? Number(artista.nb_fan).toLocaleString('pt-BR')
+                                    : 'Não informado'}
+                            </p>
+                            <div id="avaliacaoArtista">
+                                <p>Carregando avaliações...</p>
+                            </div>
+                            ${artista.link ? `
+                                <a href="${escapar(artista.link)}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="btn btn-outline-success btn-sm">
+                                    Ver no Deezer
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                await carregarAvaliacaoArtista(
+                    id,
+                    document.getElementById('avaliacaoArtista')
+                );
+
+                const resposta = await buscarAPI(
+                    `/api/artistas/${encodeURIComponent(id)}/lancamentos?tipo=todos&limit=100`
+                );
+
+                const lancamentos = resposta.data || [];
+
+                const listaAlbuns = lancamentos
+                    .filter(item =>
+                        item.record_type === 'album' ||
+                        item.record_type === 'ep'
+                    )
+                    .slice(0, 4);
+
+                const listaSingles = lancamentos
+                    .filter(item => item.record_type === 'single')
+                    .slice(0, 4);
+
+                exibirLancamentos(listaAlbuns, albuns);
+                exibirLancamentos(listaSingles, singles);
+
+                await carregarComentarios();
+            } catch (erro) {
+                console.error('Erro ao carregar artista:', erro);
+
+                informacoes.innerHTML = `
+                    <p class="text-danger">${escapar(erro.message)}</p>
+                    <a href="/" class="btn btn-outline-secondary">Voltar ao início</a>
+                `;
+
+                albuns.innerHTML = '';
+                singles.innerHTML = '';
+            }
+        }
+
+        carregarArtista();
+    </script>
+
+    <script src="/navbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
