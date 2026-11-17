@@ -165,12 +165,22 @@ function normalizarLancamento(item, tipo = 'album') {
     };
 }
 
+// LOGIN E CADASTRO
+
 app.get('/login', (req, res) => {
     if (req.session.logado) {
         return res.redirect('/');
     }
 
     res.sendFile(path.join(__dirname, 'teladelogin.html'));
+});
+
+app.get('/cadastro', (req, res) => {
+    if (req.session.logado) {
+        return res.redirect('/');
+    }
+
+    res.sendFile(path.join(__dirname, 'teladecadastro.html'));
 });
 
 app.post('/cadastro', async (req, res) => {
@@ -277,6 +287,8 @@ app.post('/login', async (req, res) => {
         });
     }
 });
+
+// AVALIAÇÕES
 
 app.get('/api/avaliacoes/:tipo/:id', verificarLogin, async (req, res) => {
     try {
@@ -395,6 +407,8 @@ app.post('/api/avaliacoes', verificarLogin, async (req, res) => {
         tratarErro(res, 'Não foi possível salvar sua avaliação.', erro);
     }
 });
+
+// COMENTÁRIOS
 
 app.get('/api/comentarios/:tipo/:id', verificarLogin, async (req, res) => {
     try {
@@ -558,6 +572,8 @@ app.delete('/api/comentarios/:id', verificarLogin, async (req, res) => {
     }
 });
 
+// PÁGINAS
+
 app.get('/', verificarLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'telainicial.html'));
 });
@@ -581,6 +597,8 @@ app.get('/tyler', verificarLogin, (req, res) => {
 app.get('/singles', verificarLogin, (req, res) => {
     res.sendFile(path.join(__dirname, 'singles.html'));
 });
+
+// CATÁLOGO
 
 app.get('/api/catalogo', verificarLogin, async (req, res) => {
     try {
@@ -868,6 +886,8 @@ app.get('/api/generos/:nome/lancamentos', verificarLogin, async (req, res) => {
         tratarErro(res, 'Não foi possível carregar os lançamentos do gênero.', erro);
     }
 });
+
+// BUSCA E LOGOUT
 
 app.get('/buscar', verificarLogin, (req, res) => {
     const pesquisa = req.query.q;
